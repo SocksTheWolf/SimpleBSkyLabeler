@@ -15,5 +15,10 @@
     "typescript": "^5.5.2",
     "vitest": "2.1.8",
     "wrangler": "^3.60.3"
+  },
+  "dependencies": {
+    "@atcute/cbor": "^1.0.6",
+    "@atcute/client": "^2.0.6",
+    "uint8arrays": "^5.1.0"
   }
 }
