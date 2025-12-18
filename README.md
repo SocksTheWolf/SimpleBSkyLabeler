@@ -12,7 +12,9 @@ Uses Skyware to initially set up the label service for the account. Use
 ## To Customize
 
 * Modify html files in the `html/transforms` folder.
-* Modify the images `html/favicon.ico` and everything in `html/img`. You can use [this site](https://favicon.io/favicon-converter/) to convert an image to the various favicon formats. You should not modify the `site.webmanifest`, as this project automatically updates that for you.
+* Modify the images `html/favicon.ico` and everything in `html/img`. 
+  * You can use [this site](https://favicon.io/favicon-converter/) to convert an image to the various favicon formats. 
+  * You should not modify the `site.webmanifest`, as this project automatically updates that for you.
 * Set the routes in the `wrangler.toml` to your domain
 * Modify the `[vars]` in `wrangler.toml` to change the values of:
   * SITE_TITLE
