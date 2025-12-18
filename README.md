@@ -1,6 +1,8 @@
 # Simple BSky Label Service
 
-This is a very barebones Cloudflare Worker which acts as a Bluesky labeler service.  
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/SocksTheWolf/SimpleBSkyLabeler)
+
+This is a fairly barebones Cloudflare Worker + Site which acts as a Bluesky labeler service.  
 
 Allows for users to sign up for a single label you provide and display it on their profiles.
 
