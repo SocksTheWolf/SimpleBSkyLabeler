@@ -1,0 +1,58 @@
+<!doctype html>
+<html data-theme="dark">
+<head>
+<title>{{TITLE}}</title>
+<!-- Primary Meta Tags -->
+  <meta name="title" content="{{TITLE}}" />
+  <meta name="description" content="{{DESC}}" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{HOST}}" />
+  <meta property="og:title" content="{{TITLE}}" />
+  <meta property="og:description" content="{{DESC}}" />
+  <meta property="og:image" content="/img/content-img.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="{{HOST}}" />
+  <meta property="twitter:title" content="{{TITLE}}" />
+  <meta property="twitter:description" content="{{DESC}}" />
+  <meta property="twitter:image" content="/img/content-img.jpg" />
+<!-- End Meta Tags -->
+
+<!-- Site Required Runtimes/Tags -->
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+<link rel="stylesheet" href="/css/pico.min.css" />
+<script type="text/javascript" src="/js/htmx.min.js"></script>
+<script type="text/javascript" src="/js/htmx-ext-response-targets.min.js"></script>
+<style> .output { min-height: 3rem; } </style>
+
+</head>
+<body hx-ext="response-targets">
+  <main class="container">
+    <article>
+      <header><h1>{{TITLE}}</h1></header>
+      <noscript><strong>HEY!</strong> Javascript is necessary in order to use this website.</noscript>
+      <div class="bodyContent"></div>
+      <hr />
+      <!-- Label Site Specific -->
+      <form id="addform" hx-post="/add-account" hx-target="#form-output" hx-target-error="#form-output" hx-swap="innerHTML" hx-indicator="#ind">
+        <label>
+          BSky Handle: 
+        </label>
+        <input type="text" id="username" name="domain" minlength="4" required placeholder="@example.bsky.social"  />
+        <small>This should be an user profile URL, URL to a post or a <code>USERNAME.bsky.social</code> or custom domain handle. Do not put your resolved DID here.</small>
+        <input type="submit" value="Add" />
+      </form>
+      <center class="output">
+        <span id="ind" aria-busy="true" class="htmx-indicator">Loading...</span><br />
+        <span id="form-output"></span>
+      </center>
+      <footer>
+      </footer>
+    </article>
+  </main>
+  <script src="/js/script.js" type="text/javascript"></script>
+</body>
+</html>
