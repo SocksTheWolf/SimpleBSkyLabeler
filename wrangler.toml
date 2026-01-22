@@ -10,7 +10,7 @@ compatibility_flags = ["nodejs_compat"]
 directory = "./html"
 binding = "ASSETS"
 html_handling = "drop-trailing-slash"
-run_worker_first = ["/", "!/img", "!/css", "!/js", "!/favicon.ico", "/site.webmanifest"]
+run_worker_first = ["/", "!/img", "!/css", "!/js", "!/favicon.ico", "/site.webmanifest", "!/robots.txt"]
 
 # You can modify all settings past this comment
 [observability]
