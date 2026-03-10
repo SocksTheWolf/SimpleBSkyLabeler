@@ -1,0 +1,18 @@
+# Mirror everything to Tangle
+name: Tangle Bangle
+
+on:
+  push: {}
+  workflow_dispatch: {}
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    environment:
+      name: tangled
+    steps:
+      - name: Push to Tangle
+        uses: gwennlbh/to-tangled@v0.4
+        with:
+          repo: socksthewolf.com/simplebskylabeler
+          ssh-key: ${{ secrets.KEY }}
