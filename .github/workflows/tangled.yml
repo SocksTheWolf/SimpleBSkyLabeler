@@ -16,7 +16,7 @@ jobs:
       name: tangled
     steps:
       - name: Push to Tangled
-        uses: gwennlbh/to-tangled@v0.4
+        uses: gwennlbh/to-tangled@v0.5
         with:
           repo: socksthewolf.com/simplebskylabeler
           ssh-key: ${{ secrets.KEY }}
