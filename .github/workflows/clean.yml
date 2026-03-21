@@ -1,0 +1,27 @@
+# Cleans up previous GH action queues
+name: Clean GH Actions
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  id-token: write
+  actions: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Clean up github job
+  cleanup_actions:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: Cleanup Actions
+        uses: igorjs/gh-actions-clean-workflow@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          runs_to_keep: 1
+          runs_older_than: 0
