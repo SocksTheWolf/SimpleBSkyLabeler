@@ -54,7 +54,7 @@ export class TextReplacer {
     this.replaceObj = findReplaceObj;
   }
   // Helper function
-  hasKey = (str:string) => { 
+  hasKey = (str:string) => {
     return Object.keys(this.replaceObj).find(v => str.includes(v)) != undefined;
   }
 
