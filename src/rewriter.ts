@@ -79,6 +79,7 @@ export class TextReplacer {
     for (const val of el.attributes) {
       if (this.hasKey(val[1])) {
         el.setAttribute(val[0], template(val[1], this.replaceObj));
+        break;
       }
     }
   }
