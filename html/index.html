@@ -37,13 +37,13 @@
       <div class="bodyContent"></div>
       <hr />
       <!-- Label Site Specific -->
-      <form id="addform" hx-post="/add-account" hx-target="#form-output" hx-target-error="#form-output" hx-swap="innerHTML" hx-indicator="#ind">
+      <form id="addform" hx-post="/add-account" hx-target="#form-output" hx-target-error="#form-output" hx-swap="innerHTML" hx-indicator="#ind" hx-disabled-elt="#submitButton">
         <label>
           BSky Handle:
         </label>
         <input type="text" id="username" name="domain" minlength="4" required placeholder="@example.bsky.social"  />
         <small>This should be an user profile URL, URL to a post, a handle in the form of <code>USERNAME.bsky.social</code> or custom domain. Do not put your resolved DID here.</small>
-        <input type="submit" value="Add" />
+        <input id="submitButton" type="submit" value="Add" />
       </form>
       <center class="output">
         <span id="ind" aria-busy="true" class="htmx-indicator">Loading...</span><br />
