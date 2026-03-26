@@ -21,8 +21,19 @@ binding = "DB"
 database_name = "bskylabels"
 database_id = ""
 
+[[ratelimits]]
+name = "BSKY_LABEL_LIMITER"
+namespace_id = "461001"
+[ratelimits.simple]
+limit = 10
+period = 60
+
 [vars]
 COUNT_CACHE_HOUR="4"
+
+# use rate limits (recommended)
+RATELIMIT="true"
+
 # Site metadata
 SITE_TITLE="Simple BSky Labeler"
 SITE_DESCRIPTION="Allow people to obtain a bsky label you provide"

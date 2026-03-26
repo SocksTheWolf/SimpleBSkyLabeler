@@ -128,7 +128,14 @@ export default {
         }
       }
       return response;
-    } else if (url.pathname === "/add-account" || url.pathname === "/add-self") {
+    } else if (url.pathname === "/add-account") {
+      if (env.RATELIMIT === "true") {
+        const ipAddress = request.headers.get("cf-connecting-ip") || "";
+        const { success } = await env.BSKY_LABEL_LIMITER.limit({ key: ipAddress });
+        if (!success) {
+          return new Response("<b>ERROR</b>: You are adding too quickly, please slow down", {status: 429});
+        }
+      }
       // drop non post requests
       if (request.method !== "POST") {
         return new Response("<b>ERROR</b>: You cannot submit data this way", {status: 405});

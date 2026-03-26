@@ -1,6 +1,6 @@
 {
   "name": "simplebskylabeler",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "createdb": "wrangler d1 create bskylabels --binding DB --update-config",
@@ -16,7 +16,7 @@
     "@types/node": "^25.5.0",
     "run-p": "^0.0.0",
     "typescript": "^5.9.3",
-    "wrangler": "^4.73.0"
+    "wrangler": "^4.77.0"
   },
   "dependencies": {
     "@atcute/cbor": "^1.0.7",
@@ -24,10 +24,5 @@
     "just-has": "^2.3.0",
     "just-template": "^2.2.0",
     "uint8arrays": "^5.1.0"
-  },
-  "overrides": {
-    "miniflare": {
-      "undici": "^7.24.0"
-    }
   }
 }
