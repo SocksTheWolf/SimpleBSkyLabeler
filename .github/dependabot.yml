@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # node updates
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+      semver-major-days: 30
+      semver-minor-days: 12
+      semver-patch-days: 7
+    open-pull-requests-limit: 2
+    ignore:
+      - dependency-name: 'wrangler'
