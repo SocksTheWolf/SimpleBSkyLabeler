@@ -6,23 +6,23 @@
     "createdb": "wrangler d1 create bskylabels --binding DB --update-config",
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
-    "types": "wrangler types",
+    "types": "wrangler types src/wrangler.d.ts",
     "setup": "run-p setup:*",
     "setup:local": "wrangler d1 execute bskylabels --file setup.sql --local -y",
     "setup:remote": "wrangler d1 execute bskylabels --file setup.sql --remote -y",
     "setup:types": "npm run types"
   },
   "devDependencies": {
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.9.4",
     "run-p": "^0.0.0",
     "typescript": "^5.9.3",
-    "wrangler": "^4.102.0"
+    "wrangler": "^4.105.0"
   },
   "dependencies": {
     "@atcute/cbor": "^1.0.7",
     "@atcute/client": "^2.0.9",
     "just-has": "^2.3.0",
     "just-template": "^2.2.0",
-    "uint8arrays": "^5.1.0"
+    "uint8arrays": "^5.1.1"
   }
 }
