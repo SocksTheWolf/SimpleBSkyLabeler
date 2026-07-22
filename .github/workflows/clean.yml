@@ -16,5 +16,6 @@ jobs:
   # Clean up github job
   cleanup_actions:
     name: Clean Actions
-    secrets: inherit
     uses: socksthewolf/workflows/.github/workflows/clean.yml@main
+    secrets:
+      CLEAN_TOKEN: ${{ secrets.GITHUB_TOKEN }}
