@@ -3,10 +3,9 @@ name: Clean GH Actions
 
 on:
   push:
-    branches: ["main"]
+    branches: "main"
 
 permissions:
-  id-token: write
   actions: write
 
 concurrency:
@@ -16,12 +15,6 @@ concurrency:
 jobs:
   # Clean up github job
   cleanup_actions:
-    runs-on: ubuntu-latest
-    permissions: write-all
-    steps:
-      - name: Cleanup Actions
-        uses: igorjs/gh-actions-clean-workflow@5fa2e3a4fdd40e3e7098645a0b8df08624352e5e
-        with:
-          token: ${{ secrets.GH_CLEANER_TOKEN }}
-          runs_to_keep: 1
-          runs_older_than: 0
+    name: Clean Actions
+    secrets: inherit
+    uses: socksthewolf/workflows/.github/workflows/clean.yml@main
