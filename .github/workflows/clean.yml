@@ -1,6 +1,5 @@
 # Cleans up previous GH action queues
 name: Clean GH Actions
-
 on:
   push:
     branches: "main"
@@ -9,7 +8,5 @@ permissions:
   actions: write
 
 jobs:
-  # Clean up github job
-  cleanup_actions:
-    name: Clean Actions
+  clean_actions:
     uses: socksthewolf/workflows/.github/workflows/clean_actions.yml@main

@@ -1,6 +1,5 @@
 # Mirror everything to Tangled
 name: Tangled Bangled
-
 on:
   push:
     branches: "main"
@@ -11,7 +10,6 @@ permissions:
   deployments: write
 
 jobs:
-  push:
-    name: Tangled
+  deploy_tangled:
     uses: socksthewolf/workflows/.github/workflows/deploy_tangled.yml@main
     secrets: inherit
