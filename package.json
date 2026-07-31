@@ -13,7 +13,7 @@
     "setup:types": "npm run types"
   },
   "devDependencies": {
-    "@types/node": "^25.9.4",
+    "@types/node": "^26.0.1",
     "run-p": "^0.0.0",
     "typescript": "^5.9.3",
     "wrangler": "^4.105.0"
