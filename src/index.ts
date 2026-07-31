@@ -4,12 +4,12 @@ import { concat as ui8Concat } from "uint8arrays";
 import { createBaseRewriter, ManifestUpdater } from "./rewriter";
 import has from 'just-has';
 
-function createErrorFrame(body: unknown): Uint8Array {
+function createErrorFrame(body: unknown): Uint8Array<ArrayBuffer> {
   const header = { op: -1 };
   return ui8Concat([cborEncode(header), cborEncode(body)]);
 }
 
-function createFrame(body: unknown, type?: string): Uint8Array {
+function createFrame(body: unknown, type?: string): Uint8Array<ArrayBuffer> {
   const header = { op: 1, t: type };
   return ui8Concat([cborEncode(header), cborEncode(body)]);
 }
@@ -159,8 +159,8 @@ export default {
       // Alternative Lookup URLs:
       // https://leccinum.us-west.host.bsky.network/xrpc/com.atproto.identity.resolveHandle?handle=
       // https://quickdid.smokesignal.tools/xrpc/com.atproto.identity.resolveHandle?handle=
-      const resolverURL:string = "https://api.bsky.app/xrpc/com.atproto.identity.resolveHandle?handle=";
-      const response = await fetch(`${resolverURL}${domainName}`, {
+      const resolverURL:string = `https://api.bsky.app/xrpc/com.atproto.identity.resolveHandle?handle=${domainName}`;
+      const response = await fetch(resolverURL, {
         cf: {
           cacheTtl: 30,
           cacheEverything: true,

@@ -1,10 +1,12 @@
 {
   "name": "simplebskylabeler",
-  "version": "1.2.0",
+  "version": "1.2.1",
+  "license": "MIT",
+  "homepage": "https://github.com/SocksTheWolf/SimpleBSkyLabeler",
   "private": true,
   "scripts": {
     "createdb": "wrangler d1 create bskylabels --binding DB --update-config",
-    "deploy": "wrangler deploy",
+    "deploy": "wrangler deploy --minify",
     "dev": "wrangler dev",
     "types": "wrangler types src/wrangler.d.ts",
     "setup": "run-p setup:*",
@@ -15,7 +17,7 @@
   "devDependencies": {
     "@types/node": "^25.9.4",
     "run-p": "^0.0.0",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "wrangler": "^4.116.0"
   },
   "dependencies": {
@@ -23,6 +25,6 @@
     "@atcute/client": "^2.0.9",
     "just-has": "^2.3.0",
     "just-template": "^2.2.0",
-    "uint8arrays": "^5.1.1"
+    "uint8arrays": "^6.1.1"
   }
 }
