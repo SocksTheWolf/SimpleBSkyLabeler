@@ -5,11 +5,11 @@
   "homepage": "https://github.com/SocksTheWolf/SimpleBSkyLabeler",
   "private": true,
   "scripts": {
-    "createdb": "wrangler d1 create bskylabels --binding DB --update-config",
     "deploy": "wrangler deploy --minify",
     "dev": "wrangler dev",
     "types": "wrangler types src/wrangler.d.ts",
     "setup": "run-p setup:*",
+    "setup:create": "wrangler d1 create bskylabels --binding DB --update-config",
     "setup:local": "wrangler d1 execute bskylabels --file setup.sql --local -y",
     "setup:remote": "wrangler d1 execute bskylabels --file setup.sql --remote -y",
     "setup:types": "npm run types"
