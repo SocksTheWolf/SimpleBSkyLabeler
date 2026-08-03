@@ -185,14 +185,14 @@ export default {
         return new Response("<b>ERROR</b>: Cannot find user account on Bluesky!", {status: 404});
       }
     } else if (url.pathname === "/" || url.pathname === "/index.html") {
-      const mainHTML = await env.ASSETS.fetch(new Request(url.origin + '/index.html'));
+      const mainHTML = await env.ASSETS.fetch(new Request(`${url.origin}/index.html`));
       return createBaseRewriter(env, url.origin).transform(mainHTML);
     } else if (url.pathname === "/site.webmanifest") {
-      const manifestFile = await env.ASSETS.fetch(new Request(url.origin + '/site.webmanifest'));
+      const manifestFile = await env.ASSETS.fetch(new Request(`${url.origin}/site.webmanifest`));
       return new HTMLRewriter().onDocument(new ManifestUpdater(env)).transform(manifestFile);
     }
 
-    const notFoundHTML = await env.ASSETS.fetch(new Request(url.origin + '/404.html'));
+    const notFoundHTML = await env.ASSETS.fetch(new Request(`${url.origin}/404.html`));
     return createBaseRewriter(env, url.origin).transform(notFoundHTML);
   },
 } satisfies ExportedHandler<Env>;

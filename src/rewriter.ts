@@ -13,7 +13,7 @@ class PageIncludeTransform {
     this.before = before;
   }
   async element(el: Element) {
-    let response = await this.env.ASSETS.fetch(new Request(this.origin + `/transforms/${this.page}`), {
+    let response = await this.env.ASSETS.fetch(new Request(`${this.origin}/transforms/${this.page}`), {
       cf: {
         cacheTtl: 90,
         cacheEverything: true,

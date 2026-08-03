@@ -10,10 +10,14 @@ if (bskyHandleEl !== null && addForm !== null) {
     clearResult();
 
     // regex to clean up URLs
-    const linkRegex = /(?:^.*\/profile\/)([0-9a-zA-Z\-\.]+)(?:\/post\/\w+)?(?:\/)?$/gm;
+    const linkRegex = /(?:^.*\/profile\/)([0-9a-zA-Z\-\.]+)(?:\/post\/\w+)?(?:\/)?$/g;
 
     // Clean any unicode trash that bsky likes to hide near handle names.
     let inputData = ev.clipboardData.getData("text").replace(/[^\x00-\x7F]/g, "").replace("@", "");
+    if (inputData.includes("did:plc:")) {
+      bskyHandleEl.value = "";
+      return;
+    }
 
     // Convert urls into handles
     var matches = linkRegex.exec(inputData);

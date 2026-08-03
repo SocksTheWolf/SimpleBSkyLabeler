@@ -18,6 +18,7 @@ updates:
       default-days: 7
       semver-major-days: 30
       semver-minor-days: 12
+      semver-patch-days: 7
     open-pull-requests-limit: 4
     ignore:
       - dependency-name: 'wrangler'
