@@ -6,7 +6,7 @@ This is a fairly barebones Cloudflare Worker + Site which acts as a Bluesky labe
 
 Allows for users to sign up for a single label you provide and display it on their profiles.
 
-Stores everything in an D1 db, you can import them by using `npm run setup` after you have ran `npm run createdb`.
+Stores everything in an D1 db, you can import them by using `npm run setup`.
 
 Uses Skyware to initially set up the label service for the account. Use
 `npx @skyware/labeler setup` to initialize the label service, `npx @skyware/labeler label add` to create a label.
