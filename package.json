@@ -26,5 +26,10 @@
     "just-has": "^2.3.0",
     "just-template": "^2.2.0",
     "uint8arrays": "^6.1.1"
+  },
+  "overrides": {
+    "wrangler": {
+      "undici": "latest"
+    }
   }
 }
