@@ -21,7 +21,7 @@
     "wrangler": "^4.119.0"
   },
   "dependencies": {
-    "@atcute/cbor": "^1.0.7",
+    "@atcute/cbor": "^2.3.5",
     "@atcute/client": "^2.0.9",
     "just-has": "^2.3.0",
     "just-template": "^2.2.0",
