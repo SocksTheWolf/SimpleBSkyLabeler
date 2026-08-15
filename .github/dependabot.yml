@@ -19,6 +19,14 @@ updates:
       semver-major-days: 30
       semver-minor-days: 12
       semver-patch-days: 7
+    groups:
+      atproto:
+        patterns:
+          - "@atcute/*"
+      utils:
+        patterns:
+          - "just-*"
+          - "uint8arrays"
     open-pull-requests-limit: 4
     ignore:
       - dependency-name: 'wrangler'

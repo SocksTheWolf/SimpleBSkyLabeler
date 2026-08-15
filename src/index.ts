@@ -1,5 +1,4 @@
 import { encode as cborEncode } from "@atcute/cbor";
-import type { At } from "@atcute/client/lexicons";
 import { concat as ui8Concat } from "uint8arrays";
 import { createBaseRewriter, ManifestUpdater } from "./rewriter";
 import has from 'just-has';
@@ -52,7 +51,7 @@ async function replay(env: any, sub: WebSocket, cursor: number | null) {
     // https://atproto.com/specs/label#schema-and-data-model
     const label = {
       ver: LABEL_VERSION,
-      src: labelSrc as At.DID,
+      src: labelSrc,
       uri: row.uri,
       val: row.val,
       neg: row.neg,

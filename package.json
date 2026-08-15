@@ -1,6 +1,6 @@
 {
   "name": "simplebskylabeler",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "license": "MIT",
   "homepage": "https://github.com/SocksTheWolf/SimpleBSkyLabeler",
   "private": true,
@@ -8,7 +8,7 @@
     "deploy": "wrangler deploy --minify",
     "dev": "wrangler dev",
     "types": "wrangler types src/wrangler.d.ts",
-    "setup": "run-p setup:*",
+    "setup": "npm run setup:create && npm run setup:local && npm run setup:remote",
     "setup:create": "wrangler d1 create bskylabels --binding DB --update-config",
     "setup:local": "wrangler d1 execute bskylabels --file setup.sql --local -y",
     "setup:remote": "wrangler d1 execute bskylabels --file setup.sql --remote -y",
@@ -16,13 +16,11 @@
   },
   "devDependencies": {
     "@types/node": "^25.9.5",
-    "npm-run-all2": "^9.0.3",
     "typescript": "^6.0.3",
     "wrangler": "^4.122.0"
   },
   "dependencies": {
     "@atcute/cbor": "^1.0.7",
-    "@atcute/client": "^2.0.9",
     "just-has": "^2.3.0",
     "just-template": "^2.2.0",
     "uint8arrays": "^6.1.1"
