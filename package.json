@@ -15,12 +15,14 @@
     "setup:types": "npm run types"
   },
   "devDependencies": {
+    "@atcute/lexicons": "^2.1.0",
     "@types/node": "^25.9.5",
     "typescript": "^6.0.3",
     "wrangler": "^4.126.0"
   },
   "dependencies": {
-    "@atcute/cbor": "^1.0.7",
+    "@atcute/cbor": "^2.3.6",
+    "@atcute/client": "^5.1.1",
     "just-has": "^2.3.0",
     "just-template": "^2.2.0",
     "uint8arrays": "^6.1.1"
