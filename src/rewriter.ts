@@ -1,19 +1,17 @@
 import template from 'just-template';
 
 class PageIncludeTransform {
-  origin: string;
   env: Env;
   page: string;
   before: boolean;
 
-  constructor(e: Env, o: string, page: string, before: boolean=true) {
+  constructor(e: Env, page: string, before: boolean=true) {
     this.env = e;
-    this.origin = o;
     this.page = page;
     this.before = before;
   }
   async element(el: Element) {
-    let response = await this.env.ASSETS.fetch(new Request(`${this.origin}/transforms/${this.page}`), {
+    let response = await this.env.ASSETS.fetch(new Request(`https://1.1.1.1/transforms/${this.page}`), {
       cf: {
         cacheTtl: 90,
         cacheEverything: true,
@@ -29,20 +27,20 @@ class PageIncludeTransform {
 }
 
 export class HTMLTransformFooter extends PageIncludeTransform {
-  constructor(e: Env, o: string) {
-    super(e, o, "footer.html");
+  constructor(e: Env) {
+    super(e, "footer.html");
   }
 }
 
 export class HTMLTransformHeader extends PageIncludeTransform {
-  constructor(e: Env, o: string) {
-    super(e, o, "header.html", false);
+  constructor(e: Env) {
+    super(e, "header.html", false);
   }
 }
 
 export class HTMLTransformBody extends PageIncludeTransform {
-  constructor(e: Env, o: string) {
-    super(e, o, "content.html");
+  constructor(e: Env) {
+    super(e, "content.html");
   }
 }
 
@@ -117,9 +115,9 @@ export class MetaUpdater extends TextReplacer {
 
 export function createBaseRewriter(env: Env, origin: string) {
   return new HTMLRewriter()
-    .on('head', new HTMLTransformHeader(env, origin))
-    .on('footer', new HTMLTransformFooter(env, origin))
-    .on('div.bodyContent', new HTMLTransformBody(env, origin))
+    .on('head', new HTMLTransformHeader(env))
+    .on('footer', new HTMLTransformFooter(env))
+    .on('div.bodyContent', new HTMLTransformBody(env))
     .on('title', new TitleUpdater(env))
     .on('meta', new MetaUpdater(env, origin))
     .on('header h1', new TitleUpdater(env));

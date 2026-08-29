@@ -1,7 +1,7 @@
 import { encode as cborEncode } from "@atcute/cbor";
+import has from 'just-has';
 import { concat as ui8Concat } from "uint8arrays";
 import { createBaseRewriter, ManifestUpdater } from "./rewriter";
-import has from 'just-has';
 
 function createErrorFrame(body: unknown): Uint8Array<ArrayBuffer> {
   const header = { op: -1 };
@@ -75,17 +75,17 @@ let subscribers: WebSocket[] = [];
 
 export default {
   async fetch(request, env, ctx): Promise<Response> {
-    const url = new URL(request.url);
+    const {searchParams, pathname, origin } = new URL(request.url);
 
-    if (url.pathname == "/xrpc/com.atproto.label.subscribeLabels" ||
-        url.pathname == "//xrpc/com.atproto.label.subscribeLabels") {
+    if (pathname == "/xrpc/com.atproto.label.subscribeLabels" ||
+        pathname == "//xrpc/com.atproto.label.subscribeLabels") {
       // Set up WS connection.
       const upgradeHeader = request.headers.get('Upgrade');
       if (!upgradeHeader || upgradeHeader !== 'websocket') {
         return new Response('Expected Upgrade: websocket', { status: 426 });
       }
 
-      const cursor = parseInt(url.searchParams.get("cursor") ?? "0", 10);
+      const cursor = parseInt(searchParams.get("cursor") ?? "0", 10);
 
       const webSocketPair = new WebSocketPair();
       const [client, server] = Object.values(webSocketPair);
@@ -96,15 +96,18 @@ export default {
       });
 
       subscribers.push(server);
-      replay(env, server, cursor).catch(reason => console.error(reason));
+      replay(env, server, cursor).catch(reason => {
+        // ignore the reason, just silently do nothing.
+        //console.error(reason)
+      });
 
       return new Response(null, {
         status: 101,
         webSocket: client,
       });
-    } else if (url.pathname === "/count") {
+    } else if (pathname === "/count") {
       const cache = caches.default;
-      const cacheKey = new Request(url.toString(), request);
+      const cacheKey = request.clone();
       let response = await cache.match(cacheKey);
       if (!response) {
         try {
@@ -127,7 +130,7 @@ export default {
         }
       }
       return response;
-    } else if (url.pathname === "/add-account") {
+    } else if (pathname === "/add-account") {
       if (env.RATELIMIT === "true") {
         const ipAddress = request.headers.get("cf-connecting-ip") || "";
         const { success } = await env.BSKY_LABEL_LIMITER.limit({ key: ipAddress });
@@ -183,15 +186,15 @@ export default {
       else {
         return new Response("<b>ERROR</b>: Cannot find user account on Bluesky!", {status: 404});
       }
-    } else if (url.pathname === "/" || url.pathname === "/index.html") {
-      const mainHTML = await env.ASSETS.fetch(new Request(`${url.origin}/index.html`));
-      return createBaseRewriter(env, url.origin).transform(mainHTML);
-    } else if (url.pathname === "/site.webmanifest") {
-      const manifestFile = await env.ASSETS.fetch(new Request(`${url.origin}/site.webmanifest`));
+    } else if (pathname === "/" || pathname === "/index.html") {
+      const mainHTML = await env.ASSETS.fetch(new Request(`https://1.1.1.1/index.html`));
+      return createBaseRewriter(env, origin).transform(mainHTML);
+    } else if (pathname === "/site.webmanifest") {
+      const manifestFile = await env.ASSETS.fetch(new Request(`https://1.1.1.1/site.webmanifest`));
       return new HTMLRewriter().onDocument(new ManifestUpdater(env)).transform(manifestFile);
     }
 
-    const notFoundHTML = await env.ASSETS.fetch(new Request(`${url.origin}/404.html`));
-    return createBaseRewriter(env, url.origin).transform(notFoundHTML);
+    const notFoundHTML = await env.ASSETS.fetch(new Request(`https://1.1.1.1/404.html`));
+    return createBaseRewriter(env, origin).transform(notFoundHTML);
   },
 } satisfies ExportedHandler<Env>;
