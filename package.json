@@ -21,8 +21,8 @@
     "wrangler": "^4.136.1"
   },
   "dependencies": {
-    "@atcute/cbor": "^2.3.6",
-    "@atcute/client": "^5.1.1",
+    "@atcute/cbor": "^2.3.7",
+    "@atcute/client": "^5.1.2",
     "just-has": "^2.3.0",
     "just-template": "^2.2.0",
     "uint8arrays": "^6.1.1"
