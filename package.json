@@ -18,7 +18,7 @@
     "@atcute/lexicons": "^2.1.0",
     "@types/node": "^25.9.8",
     "typescript": "^6.0.3",
-    "wrangler": "^4.148.0"
+    "wrangler": "^4.149.0"
   },
   "dependencies": {
     "@atcute/cbor": "^2.3.6",
@@ -33,9 +33,6 @@
     },
     "@actions/http-client": {
       "undici": "^7.29.1"
-    },
-    "miniflare": {
-      "sharp": "0.35.5"
     }
   }
 }
