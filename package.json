@@ -18,7 +18,7 @@
     "@atcute/lexicons": "^2.1.0",
     "@types/node": "^25.9.9",
     "typescript": "^6.0.3",
-    "wrangler": "^4.152.0"
+    "wrangler": "^4.154.0"
   },
   "dependencies": {
     "@atcute/cbor": "^2.3.6",
